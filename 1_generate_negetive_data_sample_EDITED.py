@@ -9,7 +9,7 @@ import random
 nege_seq = []
 #1. generate random sequences from 1st Markov chain
 #############################
-def get_first(A,C,G,T):
+def getfirst(A,C,G,T):
 	"this function is to get the first nt for the random sequence"
 	total = A + C + G + T
 	rn = random.uniform(0,total)
@@ -20,11 +20,11 @@ def get_first(A,C,G,T):
 
 	if rn < lt1:
 		ot = "A"
-	elif rn < lt2 and rm >= lt1:
+	elif rn < lt2 and rn >= lt1:
 		ot = "C"
-	elif rn < lt3 and rm >= lt2:
+	elif rn < lt3 and rn >= lt2:
 		ot = "G"	
-	elif rn < lt4 and rm >= lt3:
+	elif rn < lt4 and rn >= lt3:
 		ot = "T"
 
 def getlength(min_cd,max_cd):
@@ -225,7 +225,7 @@ num = int(i / 2) # half of negetive sample are generated from here
 # once the sequence length meet the length requirement, then jump out of the while loop and put the sequence into negetive set
 for index in range(num):
 	leng = getlength(min_cd - 1, max_cd)
-	seq = getfirst(toatl_A, total_G, total_C, total_T)
+	seq = getfirst(total_A, total_G, total_C, total_T)
 	while(1):
 		next_nt = getnext(seq[-1],sub_lt)
 		seq = seq + next_nt
